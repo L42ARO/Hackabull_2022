@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Link } from "react-router-dom";
 
 interface Leader {
@@ -6,6 +6,7 @@ interface Leader {
     firstname: string,
     lastname: string,
     email: string
+    password: string
 }
 
 function renderLeader(leader: Leader) {
@@ -20,31 +21,31 @@ function renderLeader(leader: Leader) {
 export default function UserAuth() {
 
     const [leaders, setLeaders] = useState([] as Leader[]);
-
+    let emailInput = useRef(null); 
+    let passwordInput = useRef(null);
     useEffect(() => {
         fetch('/.netlify/functions/getUsers')
             .then(response => response.json() as Promise<Leader[]>)
             .then(data => setLeaders(data));
     }, []);
-    console.log(leaders);
+    function handleLogIn(e: any) {
+        e.preventDefault();
+        leaders.forEach(leader => {
+            if (leader.email === emailInput.current && leader.password === passwordInput.current) {
+                console.log("Logged in");
+            }else{
+                console.log("Wrong credentials");
+            }
+        });
+
+    }
     return <>
-        <h2>UserAuth</h2>
-        {leaders.length === 0 ? 
-            <div>No leader scores to display. Would you like to <Link to="admin">add one</Link>?</div>
-        :
-            <table className="table leader-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>LastName</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {leaders.map(l => renderLeader(l))}
-                </tbody>
-            </table>
-        }
+        <h2>Welcome Back</h2>
+        <h3>Login</h3>
+        <input  ref={emailInput} placeholder="Username"></input>
+        <input type="text" ref={passwordInput} placeholder="Password"></input>
+        <button type="button" onClick={handleLogIn}>LOGIN</button>
+        <button type="button">Sign Up</button>  
+        
     </>
 }
