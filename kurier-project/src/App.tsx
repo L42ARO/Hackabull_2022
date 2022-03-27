@@ -26,7 +26,7 @@ function App() {
         .then(data => setUsers(data));
   }, []);
   const [currentUser, setCurrentUser] = React.useState(null as User | null);
-  const [currentScreen, setCurrentScreen] = React.useState(['d-flex','d-none','d-none','d-none','d-none','d-none']);
+  const [currentScreen, setCurrentScreen] = React.useState(['d-flex flex-wrap mx-auto','d-none','d-none','d-none','d-none','d-none']);
   // EMAIL AND PASSWORD AUTHENTICATION----------------------------------------------------------
   function UserAuth() {
     const [emailInput, setMail] = React.useState("");
@@ -40,7 +40,7 @@ function App() {
             setWarning("Welcome, you're logged in!");
             setLogedIN(true);
             setCurrentUser(user);
-            setCurrentScreen(['d-none','d-flex','d-none','d-none','d-none','d-none']);
+            setCurrentScreen(['d-none','d-flex d-wrap mx-auto','d-none','d-none','d-none','d-none']);
           }
         });
         if(!logedIN){
@@ -79,8 +79,8 @@ function App() {
           <button onClick={handleNewTaskButton}>
             +
           </button>
-          <div className="task-choice">
-          <h3>TITLE</h3> 
+          <div className={currentScreen[5]}>
+          <h3>SUBWAY ORDER</h3> 
           <p>Description</p>
           </div>
           <div className="task-choice">
@@ -91,25 +91,51 @@ function App() {
     );
   }
   function NewTask() {
+    const [title, setTitle] = React.useState("");
+    const [currBid, setCurrBid] = React.useState(0);
+
+    function addTask(){
+      // const scoreEntry = {
+      //     UserId: currentUser?.id,
+      //     currBid: currBid,
+      //     title: title,
+      // }
+
+      // fetch("/.netlify/functions/addScore",
+      //     {
+      //         headers: {
+      //             'Accept': 'application/json',
+      //             'Content-Type': 'application/json'
+      //         },
+      //         method: "POST",
+      //         body: JSON.stringify(scoreEntry)
+      //     })
+      setCurrentScreen(['d-none','d-flex flex-wrap','d-none','d-none','d-none','d-flex']);
+    }
+    function handleOnChangeTitle (e: React.ChangeEvent<HTMLInputElement>) {
+      setTitle(e.target.value);
+    }
+    function handleOnChangeCurrBid (e: React.ChangeEvent<HTMLInputElement>) {
+      setCurrBid(Number(e.target.value));
+    }
     return(
       <div className={currentScreen[2]}>
         <h1>TASK REQUEST</h1>
         <p>{currentUser?.firstname}</p>
         <h3>Task</h3>
-            <input type="text" placeholder='Name of the task'></input>
+            <input type="text" onChange={handleOnChangeTitle} placeholder='Name of the task'></input>
         <h3>Description</h3>
         <textarea placeholder='Description of the task'>
         </textarea>
-        <h3>Type</h3>
-        <select name="Types" id="Types">
-          <option value="Food Run">Type 1</option>
-          <option value="Store Run">Type 2</option>
-          <option value="Lost and Found">Type 3</option>
-          <option value="Academic">Type 4</option>
-          <option value="Other">Type 4</option>
-        </select>
         <h3>Price</h3>
-        <input type="number" min="0.00" max="10000.00" step="0.01" />
+        <select name="Types" id="Types">
+          <option value="Type 1">Type 1</option>
+          <option value="Type 2">Type 2</option>
+          <option value="Type 3">Type 3</option>
+          <option value="Type 4">Type 4</option>
+        </select>
+        <input onChange={handleOnChangeCurrBid} type="number" min="0.00" max="10000.00" step="0.01" />
+        <button onClick={addTask}></button>
       </div>
     );
   }
