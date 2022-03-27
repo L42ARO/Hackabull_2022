@@ -40,7 +40,7 @@ function App() {
             setWarning("Welcome, you're logged in!");
             setLogedIN(true);
             setCurrentUser(user);
-            setCurrentScreen(['d-none','d-flex d-wrap mx-auto','d-none','d-none','d-none','d-none']);
+            setCurrentScreen(['d-none','d-flex d-wrap mx-5','d-none','d-none','d-none','d-none']);
           }
         });
         if(!logedIN){
@@ -62,7 +62,7 @@ function App() {
         <input  onChange={handleChangeEmail} placeholder="Username"></input>
         <input type="text" onChange={handleChangePassword} placeholder="Password"></input>
         <button onClick={handleClick}>
-          Click me
+          sign in
         </button>
         <div>{warning}</div>
       </div>
@@ -81,7 +81,7 @@ function App() {
           </button>
           <div className={currentScreen[5]}>
           <h3>SUBWAY ORDER</h3> 
-          <p>Description</p>
+          <p>Sajdwich</p>
           </div>
           <div className="task-choice">
           <h3>TITLE</h3> 
