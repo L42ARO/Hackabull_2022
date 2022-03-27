@@ -90,12 +90,12 @@ function App() {
             +
           </button>
           <div className="d-flex flex-wrap flex-column">
-          <h3>{tasks[0].title}</h3> 
-          <p>{tasks[0].description}</p>
+          <h3>{String(tasks[0].title)}</h3> 
+          <p>{String(tasks[0].description)}</p>
           </div>
           <div className={currentScreen[5]}>
           <h3>SUBWAY ORDER</h3> 
-          <p>Sandwich</p>
+          <p>Sandwich for 5$ please</p>
           </div>
           <div className="task-choice">
           </div> 
