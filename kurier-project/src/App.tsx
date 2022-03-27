@@ -26,12 +26,11 @@ function App() {
         .then(data => setUsers(data));
   }, []);
   const [currentUser, setCurrentUser] = React.useState(null as User | null);
-
+  const [currentScreen, setCurrentScreen] = React.useState(['d-flex','d-none','d-none','d-none','d-none','d-none']);
   // EMAIL AND PASSWORD AUTHENTICATION----------------------------------------------------------
   function UserAuth() {
     const [emailInput, setMail] = React.useState("");
-    const [pwdInput, setPwd] = React.useState("");
-    const [logInVis, setLogInVis] = React.useState("d-flex");
+    const [pwdInput, setPwd] = React.useState("");    
     const [warning, setWarning] = React.useState("");
     function handleClick (e: React.ChangeEvent<any>) {
       e.preventDefault();
@@ -40,7 +39,8 @@ function App() {
           if(user.email === emailInput && user.password === pwdInput){
             setWarning("Welcome, you're logged in!");
             setLogedIN(true);
-            setLogInVis("d-none");
+            setCurrentUser(user);
+            setCurrentScreen(['d-none','d-flex','d-none','d-none','d-none','d-none']);
           }
         });
         if(!logedIN){
@@ -58,7 +58,7 @@ function App() {
       setPwd(e.target.value);
     }
     return (
-      <div className={logInVis}>
+      <div className={currentScreen[0]}>
         <input  onChange={handleChangeEmail} placeholder="Username"></input>
         <input type="text" onChange={handleChangePassword} placeholder="Password"></input>
         <button onClick={handleClick}>
@@ -68,13 +68,14 @@ function App() {
       </div>
     );
   }
-  // function taskPosts() {
-  //   return (
-  //     <div>
-  //       <h1>Task Posts</h1>
-  //     </div>
-  //   );
-  // }
+  function taskPosts() {
+    return (
+      <div className={currentScreen[1]}>
+        <h1>Task Posts</h1>
+        <p>{currentUser?.id}</p>
+      </div>
+    );
+  }
   return(
     <div>
        <UserAuth />
