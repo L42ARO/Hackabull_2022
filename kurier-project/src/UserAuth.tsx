@@ -26,7 +26,7 @@ export default function UserAuth() {
             .then(response => response.json() as Promise<Leader[]>)
             .then(data => setLeaders(data));
     }, []);
-    console.log(typeof leaders);
+    console.log(leaders);
     return <>
         <h2>UserAuth</h2>
         {leaders.length === 0 ? 
