@@ -11,3 +11,16 @@ TEST DB:
     port: 26257
     databse: oasis-ninja-366.defaultdbs
     password: 5vZyE5Y-QoFhYMINS8wjrA
+ACTUAL DB:
+    COMMAND LINE:
+    $ErrorActionPreference = "Stop"; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; $null = New-Item -Type Directory -Force $env:appdata/cockroach; Invoke-WebRequest -Uri https://binaries.cockroachdb.com/cockroach-v21.2.5.windows-6.2-amd64.zip -OutFile cockroach.zip; Expand-Archive -Force -Path cockroach.zip; Copy-Item -Force cockroach/cockroach-v21.2.5.windows-6.2-amd64/cockroach.exe -Destination $env:appdata/cockroach; $Env:PATH += ";$env:appdata/cockroach"; # We recommend adding ";$env:appdata/cockroach" to the Path variable for your system environment. See https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables#saving-changes-to-environment-variables for more information.
+    cockroach sql --url "postgresql://l42aro:urytGQGTnln5aNXIVFhIGg@free-tier11.gcp-us-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dkurier-db-372"
+    CONNECTION STRING:
+    mkdir -p $env:appdata\.postgresql\; Invoke-WebRequest -Uri https://cockroachlabs.cloud/clusters/239cdbec-45c4-45b8-b0d3-01e80734f111/cert -OutFile $env:appdata\.postgresql\root.crt
+    postgresql://l42aro:urytGQGTnln5aNXIVFhIGg@free-tier11.gcp-us-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dkurier-db-372
+    CONNECTION PARAMTERS:
+    username = l42aro
+    host = free-tier11.gcp-us-east1.cockroachlabs.cloud
+    port = 26257
+    database = kurier-db-372.defaultdb
+    password = urytGQGTnln5aNXIVFhIGg
