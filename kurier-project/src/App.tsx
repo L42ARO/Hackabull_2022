@@ -91,7 +91,7 @@ function App() {
     );
   }
   function NewTask() {
-    const [title, setTitle] = React.useState("");
+    const [title, setTitle] = React.useState("0");
     const [currBid, setCurrBid] = React.useState(0);
 
     function addTask(){
