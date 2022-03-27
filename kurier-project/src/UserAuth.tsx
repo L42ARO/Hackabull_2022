@@ -11,8 +11,8 @@ interface Leader {
 export default function UserAuth() {
 
     const [leaders, setLeaders] = useState([] as Leader[]);
-    let emailInput = useRef(null); 
-    let passwordInput = useRef(null);
+    let emailInput = useRef<HTMLInputElement>(null); 
+    let passwordInput = useRef<HTMLInputElement>(null);
     useEffect(() => {
         fetch('/.netlify/functions/getUsers')
             .then(response => response.json() as Promise<Leader[]>)
@@ -23,7 +23,7 @@ export default function UserAuth() {
         if (emailInput.current != null && passwordInput.current != null) {
        
             leaders.forEach(leader => {
-                if (leader.email === emailInput.current.value && leader.password === passwordInput.current.value) {
+                if (leader.email === emailInput?.current?.value && leader.password === passwordInput?.current?.value) {
                     console.log("Logged in");
                 }else{
                     console.log("Wrong credentials");
