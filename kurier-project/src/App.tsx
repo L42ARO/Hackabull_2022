@@ -11,11 +11,13 @@ import './App.css';
 
 function App() {
   const [count, setCount] = React.useState(0);
-
+  function handleClick() {
+    setCount(count + 1);
+  }
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={() => handleClick}>
         Click me
       </button>
     </div>
