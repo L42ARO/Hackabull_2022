@@ -69,16 +69,16 @@ function App() {
     );
   }
   function PostedTasks() {
-    interface Task{
-      title: string,
-      description: string,
-    }
-    const [tasks, setTasks] = React.useState([] as Task[]);
-    React.useEffect(() => {
-      fetch('/.netlify/functions/getTasks')
-          .then(response => response.json() as Promise<Task[]>)
-          .then(data => setTasks(data));
-    }, []);
+    // interface Task{
+    //   title: string,
+    //   description: string,
+    // }
+    // const [tasks, setTasks] = React.useState([] as Task[]);
+    // React.useEffect(() => {
+    //   fetch('/.netlify/functions/getTasks')
+    //       .then(response => response.json() as Promise<Task[]>)
+    //       .then(data => setTasks(data));
+    // }, []);
     function handleNewTaskButton(e: React.ChangeEvent<any>){
       e.preventDefault();
       setCurrentScreen(['d-none','d-none','d-flex flex-wrap flex-column','d-none','d-none','d-none flex-wrap flex-column']);
@@ -89,10 +89,10 @@ function App() {
           <button onClick={handleNewTaskButton}>
             +
           </button>
-          <div className="d-flex flex-wrap flex-column">
+          {/* <div className="d-flex flex-wrap flex-column">
           <h3>{String(tasks[0].title)}</h3> 
           <p>{String(tasks[0].description)}</p>
-          </div>
+          </div> */}
           <div className={currentScreen[5]}>
           <h3>SUBWAY ORDER</h3> 
           <p>Sandwich for 5$ please</p>
