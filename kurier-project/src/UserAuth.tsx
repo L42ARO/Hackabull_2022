@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useRef} from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+  } from "react-router-dom";
 
 interface Leader {
     id: number,
@@ -9,6 +15,7 @@ interface Leader {
 }
 
 export default function UserAuth() {
+
 
     const [leaders, setLeaders] = useState([] as Leader[]);
     let emailInput = useRef<HTMLInputElement>(null); 
@@ -25,6 +32,7 @@ export default function UserAuth() {
             leaders.forEach(leader => {
                 if (leader.email === emailInput?.current?.value && leader.password === passwordInput?.current?.value) {
                     console.log("Logged in");
+                    
                 }else{
                     console.log("Wrong credentials");
                 }
@@ -35,7 +43,7 @@ export default function UserAuth() {
         }
 
     }
-    return <>
+    return <Router>
         <h2>Welcome Back</h2>
         <h3>Login</h3>
         <input  ref={emailInput} placeholder="Username"></input>
@@ -43,5 +51,5 @@ export default function UserAuth() {
         <button type="button" onClick={handleLogIn}>LOGIN</button>
         <button type="button">Sign Up</button>  
         
-    </>
+    </Router>
 }
