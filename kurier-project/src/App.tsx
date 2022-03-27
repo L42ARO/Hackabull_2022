@@ -120,6 +120,7 @@ function App() {
     }
     return(
       <div className={currentScreen[2]}>
+        <p className='d-none'>{title+currBid}</p>
         <h1>TASK REQUEST</h1>
         <p>{currentUser?.firstname}</p>
         <h3>Task</h3>
