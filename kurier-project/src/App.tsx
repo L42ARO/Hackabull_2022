@@ -12,7 +12,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      {/* <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div className="container-fluid">
           <a className="navbar-brand" aria-label="home page" href="/">CockroachDB + TypeScript</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@ function App() {
             </ul>
           </div>
         </div>
-      </nav> */}
+      </nav>
 
       <div className="container page-content">
         <Routes>
