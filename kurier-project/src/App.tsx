@@ -10,15 +10,15 @@ import * as React from 'react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = React.useState(0);
+  const [email, setMail] = React.useState(0);
   function handleClick (e: React.ChangeEvent<any>) {
     e.preventDefault();
-    setCount(count + 1);
+    setMail(email + 1);
     console.log("click!");
   }
   return (
     <div>
-      <p>You clicked {count} times</p>
+      <p>You clicked {email} times</p>
       <button onClick={handleClick}>
         Click me
       </button>
