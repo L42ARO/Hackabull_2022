@@ -110,7 +110,7 @@ function App() {
       //         method: "POST",
       //         body: JSON.stringify(scoreEntry)
       //     })
-      setCurrentScreen(['d-none','d-flex flex-wrap','d-none','d-none','d-none','d-flex']);
+      setCurrentScreen(['d-none','d-flex flex-wrap flex-column','d-none','d-none','d-none','d-flex']);
     }
     function handleOnChangeTitle (e: React.ChangeEvent<HTMLInputElement>) {
       setTitle(e.target.value);
