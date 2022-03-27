@@ -18,25 +18,31 @@ interface User {
 }
 
 function App() {
-  // EMAIL AND PASSWORD AUTHENTICATION
+  //USERS DATA FETCH----------------------------------------------------------------------------
+  const [logedIN, setLogedIN] = React.useState(false);
   const [users, setUsers] = React.useState([] as User[]);
   React.useEffect(() => {
     fetch('/.netlify/functions/getUsers')
         .then(response => response.json() as Promise<User[]>)
         .then(data => setUsers(data));
   }, []);
+  // EMAIL AND PASSWORD AUTHENTICATION----------------------------------------------------------
   const [emailInput, setMail] = React.useState("");
   const [pwdInput, setPwd] = React.useState("");
+  const [logInVis, setLogInVis] = React.useState("d-flex");
   function handleClick (e: React.ChangeEvent<any>) {
     e.preventDefault();
     if(emailInput !== "" && pwdInput !== ""){
       users.forEach(user => {
         if(user.email === emailInput && user.password === pwdInput){
           console.log("Logged in");
-        }else{
-          console.log("Wrong credentials");
+          setLogedIN(true);
+          setLogInVis("d-none");
         }
       });
+      if(!logedIN){
+        console.log("Wrong credentials");
+      }
     }else{
       console.log("No credentials");
     }
@@ -49,7 +55,7 @@ function App() {
     setPwd(e.target.value);
   }
   return (
-    <div>
+    <div className='d-flex'>
       <input  onChange={handleChangeEmail} placeholder="Username"></input>
       <input type="text" onChange={handleChangePassword} placeholder="Password"></input>
       <button onClick={handleClick}>
