@@ -69,18 +69,44 @@ function App() {
     );
   }
   function PostedTasks() {
+    function handleNewTaskButton(){
+      setCurrentScreen(['d-none','d-none','d-flex','d-none','d-none','d-none']);
+    }
     return (
       <div className={currentScreen[1]+"flex-wrap"}>
           <h2 >POSTED TASKS</h2>
-          <p>{currentUser?.id}</p>
-          <a href="TheNegotiator.html"><div className="task-choice">
+          <button onClick={handleNewTaskButton}>
+            +
+          </button>
+          <a><div className="task-choice">
           <h3>TITLE</h3> 
           <p>Description</p>
           </div></a>
-          <a href="TheNegotiator.html"><div className="task-choice">
+          <a><div className="task-choice">
           <h3>TITLE</h3> 
           <p>Description</p>
           </div> </a>
+      </div>
+    );
+  }
+  function NewTask() {
+    return(
+      <div className={currentScreen[2]}>
+        <h1>TASK REQUEST</h1>
+        <h3>Task</h3>
+            <input type="text"></input>
+        <h3>Description</h3>
+        <textarea>
+        </textarea>
+        <h3>Type</h3>
+        <select name="Types" id="Types">
+          <option value="Type 1">Type 1</option>
+          <option value="Type 2">Type 2</option>
+          <option value="Type 3">Type 3</option>
+          <option value="Type 4">Type 4</option>
+        </select>
+        <h3>Price</h3>
+        <input type="number" min="0.00" max="10000.00" step="0.01" />
       </div>
     );
   }
