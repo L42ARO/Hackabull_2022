@@ -69,7 +69,8 @@ function App() {
     );
   }
   function PostedTasks() {
-    function handleNewTaskButton(){
+    function handleNewTaskButton(e: React.ChangeEvent<any>){
+      e.preventDefault();
       setCurrentScreen(['d-none','d-none','d-flex','d-none','d-none','d-none']);
     }
     return (
@@ -95,9 +96,9 @@ function App() {
         <h1>TASK REQUEST</h1>
         <p>{currentUser?.firstname}</p>
         <h3>Task</h3>
-            <input type="text"></input>
+            <input type="text" placeholder='Name of the task'></input>
         <h3>Description</h3>
-        <textarea>
+        <textarea placeholder='Description of the task'>
         </textarea>
         <h3>Type</h3>
         <select name="Types" id="Types">
