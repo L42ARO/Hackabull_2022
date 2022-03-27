@@ -116,6 +116,7 @@ function App() {
     <div>
        <UserAuth />
        <PostedTasks />
+       <NewTask />
     </div>
   )
 }
