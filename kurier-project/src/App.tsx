@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 // import {
 //   BrowserRouter as Router,
 //   Routes,
@@ -10,8 +10,15 @@ import React from 'react';
 import './App.css';
 
 function App() {
+  const [count, setCount] = React.useState(0);
+
   return (
-    <div>Hello world</div>
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
   );
 }
 
