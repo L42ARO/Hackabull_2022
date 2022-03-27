@@ -18,17 +18,18 @@ interface User {
 }
 
 function App() {
+  // EMAIL AND PASSWORD AUTHENTICATION
   const [users, setUsers] = React.useState([] as User[]);
   React.useEffect(() => {
     fetch('/.netlify/functions/getUsers')
         .then(response => response.json() as Promise<User[]>)
         .then(data => setUsers(data));
-}, []);
+  }, []);
   const [emailInput, setMail] = React.useState("");
   const [pwdInput, setPwd] = React.useState("");
   function handleClick (e: React.ChangeEvent<any>) {
     e.preventDefault();
-    if(emailInput != "" && pwdInput != ""){
+    if(emailInput !== "" && pwdInput !== ""){
       users.forEach(user => {
         if(user.email === emailInput && user.password === pwdInput){
           console.log("Logged in");
