@@ -70,7 +70,7 @@ function App() {
   }
   function PostedTasks() {
     return (
-      <div className={currentScreen[1]}>
+      <div className={currentScreen[1]+"flex-wrap"}>
           <h2 >POSTED TASKS</h2>
           <p>{currentUser?.id}</p>
           <a href="TheNegotiator.html"><div className="task-choice">
