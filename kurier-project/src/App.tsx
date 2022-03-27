@@ -55,7 +55,7 @@ function App() {
     setPwd(e.target.value);
   }
   return (
-    <div className='d-flex'>
+    <div className={logInVis}>
       <input  onChange={handleChangeEmail} placeholder="Username"></input>
       <input type="text" onChange={handleChangePassword} placeholder="Password"></input>
       <button onClick={handleClick}>
