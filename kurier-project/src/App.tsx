@@ -30,21 +30,22 @@ function App() {
   const [emailInput, setMail] = React.useState("");
   const [pwdInput, setPwd] = React.useState("");
   const [logInVis, setLogInVis] = React.useState("d-flex");
+  const [warning, setWarning] = React.useState("");
   function handleClick (e: React.ChangeEvent<any>) {
     e.preventDefault();
     if(emailInput !== "" && pwdInput !== ""){
       users.forEach(user => {
         if(user.email === emailInput && user.password === pwdInput){
-          console.log("Logged in");
+          setWarning("Welcome, you're logged in!");
           setLogedIN(true);
           setLogInVis("d-none");
         }
       });
       if(!logedIN){
-        console.log("Wrong credentials");
+        setWarning("Wrong credentials");
       }
     }else{
-      console.log("No credentials");
+      setWarning("No credentials");
     }
     
   }
@@ -61,6 +62,7 @@ function App() {
       <button onClick={handleClick}>
         Click me
       </button>
+      <div>{warning}</div>
     </div>
   );
 }
