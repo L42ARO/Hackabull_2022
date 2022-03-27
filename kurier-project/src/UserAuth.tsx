@@ -18,15 +18,21 @@ export default function UserAuth() {
             .then(response => response.json() as Promise<Leader[]>)
             .then(data => setLeaders(data));
     }, []);
-    function handleLogIn(e: any) {
+    function handleLogIn(e: React.ChangeEvent<any>) {
         e.preventDefault();
-        leaders.forEach(leader => {
-            if (leader.email === emailInput.current && leader.password === passwordInput.current) {
-                console.log("Logged in");
-            }else{
-                console.log("Wrong credentials");
-            }
-        });
+        if (emailInput.current != null && passwordInput.current != null) {
+       
+            leaders.forEach(leader => {
+                if (leader.email === emailInput.current.value && leader.password === passwordInput.current.value) {
+                    console.log("Logged in");
+                }else{
+                    console.log("Wrong credentials");
+                }
+            });
+        }
+        else{
+            console.log("No credentials");
+        }
 
     }
     return <>
