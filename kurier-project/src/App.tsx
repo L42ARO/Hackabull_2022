@@ -26,7 +26,7 @@ function App() {
         .then(data => setUsers(data));
   }, []);
   const [currentUser, setCurrentUser] = React.useState(null as User | null);
-  const [currentScreen, setCurrentScreen] = React.useState(['d-flex flex-wrap mx-auto','d-none','d-none','d-none','d-none','d-none']);
+  const [currentScreen, setCurrentScreen] = React.useState(['d-flex flex-wrap flex-column mx-auto','d-none','d-none','d-none','d-none','d-none']);
   // EMAIL AND PASSWORD AUTHENTICATION----------------------------------------------------------
   function UserAuth() {
     const [emailInput, setMail] = React.useState("");
@@ -69,9 +69,19 @@ function App() {
     );
   }
   function PostedTasks() {
+    interface Task{
+      title: string,
+      description: string,
+    }
+    const [tasks, setTasks] = React.useState([] as Task[]);
+    React.useEffect(() => {
+      fetch('/.netlify/functions/getTasks')
+          .then(response => response.json() as Promise<Task[]>)
+          .then(data => setTasks(data));
+    }, []);
     function handleNewTaskButton(e: React.ChangeEvent<any>){
       e.preventDefault();
-      setCurrentScreen(['d-none','d-none','d-flex flex-wrap','d-none','d-none','d-none']);
+      setCurrentScreen(['d-none','d-none','d-flex flex-wrap flex-column','d-none','d-none','d-none flex-wrap flex-column']);
     }
     return (
       <div className={currentScreen[1]}>
@@ -79,13 +89,15 @@ function App() {
           <button onClick={handleNewTaskButton}>
             +
           </button>
+          <div className="d-flex flex-wrap flex-column">
+          <h3>{String(tasks[0].title)}</h3> 
+          <p>{String(tasks[0].description)}</p>
+          </div>
           <div className={currentScreen[5]}>
           <h3>SUBWAY ORDER</h3> 
-          <p>Sajdwich</p>
+          <p>Sandwich for 5$ please</p>
           </div>
           <div className="task-choice">
-          <h3>TITLE</h3> 
-          <p>Description</p>
           </div> 
       </div>
     );
