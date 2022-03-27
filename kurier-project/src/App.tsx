@@ -78,14 +78,14 @@ function App() {
           <button onClick={handleNewTaskButton}>
             +
           </button>
-          <a><div className="task-choice">
+          <div className="task-choice">
           <h3>TITLE</h3> 
           <p>Description</p>
-          </div></a>
-          <a><div className="task-choice">
+          </div>
+          <div className="task-choice">
           <h3>TITLE</h3> 
           <p>Description</p>
-          </div> </a>
+          </div> 
       </div>
     );
   }
@@ -101,10 +101,11 @@ function App() {
         </textarea>
         <h3>Type</h3>
         <select name="Types" id="Types">
-          <option value="Type 1">Type 1</option>
-          <option value="Type 2">Type 2</option>
-          <option value="Type 3">Type 3</option>
-          <option value="Type 4">Type 4</option>
+          <option value="Food Run">Type 1</option>
+          <option value="Store Run">Type 2</option>
+          <option value="Lost and Found">Type 3</option>
+          <option value="Academic">Type 4</option>
+          <option value="Other">Type 4</option>
         </select>
         <h3>Price</h3>
         <input type="number" min="0.00" max="10000.00" step="0.01" />
