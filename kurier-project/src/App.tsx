@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => handleClick}>
+      <button onClick={handleClick}>
         Click me
       </button>
     </div>
