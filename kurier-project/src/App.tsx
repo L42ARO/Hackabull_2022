@@ -93,6 +93,7 @@ function App() {
     return(
       <div className={currentScreen[2]}>
         <h1>TASK REQUEST</h1>
+        <p>{currentUser?.firstname}</p>
         <h3>Task</h3>
             <input type="text"></input>
         <h3>Description</h3>
