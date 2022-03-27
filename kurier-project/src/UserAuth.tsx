@@ -8,15 +8,6 @@ interface Leader {
     password: string
 }
 
-function renderLeader(leader: Leader) {
-    return <tr key={leader.id}>
-        <td>{leader.id}</td>
-        <td>{leader.firstname}</td>
-        <td>{leader.lastname}</td>
-        <td>{leader.email}</td>
-    </tr>
-}
-
 export default function UserAuth() {
 
     const [leaders, setLeaders] = useState([] as Leader[]);
