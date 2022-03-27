@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 interface Leader {
     id: number,
-    firstName: string,
-    lastName: string,
+    firstname: string,
+    lastname: string,
     email: string
 }
 
 function renderLeader(leader: Leader) {
     return <tr key={leader.id}>
         <td>{leader.id}</td>
-        <td>{leader.firstName}</td>
-        <td>{leader.lastName}</td>
+        <td>{leader.firstname}</td>
+        <td>{leader.lastname}</td>
         <td>{leader.email}</td>
     </tr>
 }
