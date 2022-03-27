@@ -68,17 +68,26 @@ function App() {
       </div>
     );
   }
-  function taskPosts() {
+  function PostedTasks() {
     return (
       <div className={currentScreen[1]}>
-        <h1>Task Posts</h1>
-        <p>{currentUser?.id}</p>
+          <h2 >POSTED TASKS</h2>
+          <p>{currentUser?.id}</p>
+          <a href="TheNegotiator.html"><div className="task-choice">
+          <h3>TITLE</h3> 
+          <p>Description</p>
+          </div></a>
+          <a href="TheNegotiator.html"><div className="task-choice">
+          <h3>TITLE</h3> 
+          <p>Description</p>
+          </div> </a>
       </div>
     );
   }
   return(
     <div>
        <UserAuth />
+       <PostedTasks />
     </div>
   )
 }
