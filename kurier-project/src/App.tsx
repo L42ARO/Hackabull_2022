@@ -10,15 +10,17 @@ import * as React from 'react';
 import './App.css';
 
 function App() {
-  const [email, setMail] = React.useState(0);
+  const [emailInput, setMail] = React.useState("");
   function handleClick (e: React.ChangeEvent<any>) {
     e.preventDefault();
-    setMail(email + 1);
-    console.log("click!");
+    console.log(emailInput);
+  }
+  function handleChange (e: React.ChangeEvent<HTMLInputElement>) {
+    setMail(e.target.value);
   }
   return (
     <div>
-      <p>You clicked {email} times</p>
+      <input  onChange={handleChange} placeholder="Username"></input>
       <button onClick={handleClick}>
         Click me
       </button>
