@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   color: WHITE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
