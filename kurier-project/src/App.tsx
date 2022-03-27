@@ -71,10 +71,10 @@ function App() {
   function PostedTasks() {
     function handleNewTaskButton(e: React.ChangeEvent<any>){
       e.preventDefault();
-      setCurrentScreen(['d-none','d-none','d-flex','d-none','d-none','d-none']);
+      setCurrentScreen(['d-none','d-none','d-flex flex-wrap','d-none','d-none','d-none']);
     }
     return (
-      <div className={currentScreen[1]+"flex-wrap"}>
+      <div className={currentScreen[1]}>
           <h2 >POSTED TASKS</h2>
           <button onClick={handleNewTaskButton}>
             +
