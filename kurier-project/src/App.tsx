@@ -142,13 +142,13 @@ function App() {
         </textarea>
         <h3>Price</h3>
         <select name="Types" id="Types">
-          <option value="Type 1">Type 1</option>
-          <option value="Type 2">Type 2</option>
-          <option value="Type 3">Type 3</option>
-          <option value="Type 4">Type 4</option>
+          <option value="Type 1">Food</option>
+          <option value="Type 2">School supplies</option>
+          <option value="Type 3">Favors</option>
+          <option value="Type 4">Lost and found</option>
         </select>
         <input onChange={handleOnChangeCurrBid} type="number" min="0.00" max="10000.00" step="0.01" />
-        <button onClick={addTask}></button>
+        <button onClick={addTask}>FINISH</button>
       </div>
     );
   }
